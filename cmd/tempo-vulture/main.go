@@ -635,6 +635,7 @@ func queryTrace(client httpclient.TempoHTTPClient, info *util.TraceInfo, l *zap.
 		tm.missingSpans++
 		return tm, nil
 	}
+	removeIgnoredResourceAttributes(trace)
 
 	// Get the expected
 	expected, err := info.ConstructTraceFromEpoch()
