@@ -642,6 +642,7 @@ func queryTrace(client httpclient.TempoHTTPClient, info *util.TraceInfo, l *zap.
 		logger.Error("unable to construct trace from epoch", zap.Error(err))
 		return tm, err
 	}
+	addExtraResourceAttributes(expected)
 
 	match := equalTraces(expected, trace)
 	if !match {
